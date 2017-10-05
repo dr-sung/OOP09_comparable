@@ -1,36 +1,26 @@
 
-/**
-   A country with a name and area.
-*/
 public class Country implements Comparable<Country>
 {
-   /**
-      Constructs a country.
-      @param aName the name of the country
-      @param anArea the area of the country
-   */
-   public Country(String aName, double anArea)
+
+   public Country(String name, double area, int population)
    {
-      name = aName;
-      area = anArea;
+      this.name = name;
+      this.area = area;
+      this.population = population;
    }
 
-   /**
-      Gets the name of the country.
-      @return the name
-   */
    public String getName()
    {
       return name;
    }
 
-   /**
-      Gets the area of the country.
-      @return the area
-   */
    public double getArea()
    {
       return area;
+   }
+   
+   public int getPopulation() {
+       return population;
    }
 
 
@@ -44,18 +34,18 @@ public class Country implements Comparable<Country>
    @Override
    public int compareTo(Country other)
    {
-      if (area < other.area) return -1;
-      if (area > other.area) return 1;
-      return 0;
+       // lexicographic ordering based on 'name' from String class
+      return name.compareTo(other.getName());
    }
 
    @Override
    public String toString() {
-     return name + "(" + area + " square km)";
+     return name + "(" + area + " square km, " + population + " people)";
    }
 
    private final String name;
    private final double area;
+   private final int population;
 
 }
 
